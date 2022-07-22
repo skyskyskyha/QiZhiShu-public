@@ -1,0 +1,141 @@
+.course-wrap {
+  width: 100%;
+  flex-direction: column;
+  .course-banner {
+    padding: 50px;
+    background-image: url('../img/banner-bg.jpg');
+    background-position: center center;
+    background-size: cover;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .banner-container {
+      color: white;
+      flex-direction: column;
+      width: 60%;
+      h2 {
+        font-size: 44px;
+        font-weight: 400;
+      }
+      h2:after {
+        content: "";
+        width: 150px;
+        display: block;
+        position: absolute;
+        border-bottom: 5px solid #6266ea;
+        padding-top: 0.5em;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+  }
+}
+$font-blue: #4232c2;
+
+.course-nav {
+  width: 60%;
+  margin: 40px 0;
+  font-weight: 600;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  li > a {
+    transition: all 0.3s;
+    margin: 0 20px;
+    color: $font-blue;
+    padding: 6px 24px;
+    font-size: 18px;
+    border-radius: 50rem !important;
+    &:hover, &.active {
+      background-color: $font-blue;
+      color: white;
+      box-shadow: 0 .5rem 1rem rgba(0,0,0,.15);
+    }
+  }
+}
+$bg-blue: #6266ea;
+.banner-button-container {
+  button {
+    margin: 0 10px;
+  }
+}
+
+.card-display-main {
+  flex-direction: column;
+  width: 60%;
+  .card-display-wrap {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 80%;
+    li {
+      width: 30%;
+      background-color: red;
+    }
+  }
+  .course-display-ul {
+    padding: 15px 0;
+    display: flex;
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    li {
+      width: 33%;
+    }
+  }
+  .course-display-tab-panel {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  & > nav > ul {
+    justify-content: center;
+  }
+}
+
+.display-card-main {
+  cursor: pointer;
+  border-radius: 15px;
+  border: 1px solid #e7e7e7;
+  margin: 10px;
+  background-color: white;
+  transition: all 0.3s;
+  &:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  }
+  .display-card-preview {
+    border-radius: 15px 15px 0 0;
+    width: 100%;
+    height: 200px;
+    background-position: center;
+    background-size: cover;
+  }
+  .display-card-content {
+    padding: 16px;
+    text-align: left;
+    h4 {
+      font-size: 20px;
+      margin: 0;
+      font-weight: 600;
+    }
+    p {
+      span {
+        color: #282c34;
+      }
+      font-size: 14px;
+      color: #989898;
+    }
+    .display-card-detail {
+      svg {
+        height: 14px;
+        width: 14px;
+      }
+      span {
+        margin: 6px 0;
+        display: block;
+      }
+      font-size: 14px;
+      color: #868686;
+    }
+  }
+}
