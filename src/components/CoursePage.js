@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import '../assets/style/CoursePage.scss'
 import CourseNavMenu from "./Course/CourseNavMenu";
 import Button from "./Button";
 import CourseDisplay from "./Course/CourseDisplay";
+import {Routes, Route} from "react-router-dom";
+import axios from 'axios'
 const options = [
     {
         name: 'C++',
@@ -19,6 +21,7 @@ const options = [
 ]
 
 const CoursePage = () => {
+    
     return (
         <div className={"course-wrap flex-all-center"}>
             <div className={'course-banner'}>

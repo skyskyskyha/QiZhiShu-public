@@ -2,15 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 import NavigateBar from "./components/NavigateBar";
 import 'font-awesome/css/font-awesome.min.css';
-import {Routes, Route, Link} from 'react-router-dom'
+import {Routes, Route, Link, Navigate} from 'react-router-dom'
 import CoursePage from "./components/CoursePage";
+import CourseInfoPage from "./components/CourseInfoPage";
 function App() {
   return (
     <div className="App">
         <NavigateBar/>
         <section className="main-wrap">
             <Routes>
-                <Route path="/course/*" element={<CoursePage/>}></Route>
+                <Route path="course">
+                    <Route index element={<Navigate to={'/course/overview'}/>}/>
+                    <Route path="overview" element={<CoursePage/>}/>
+                    <Route path="info/:id" element={<CourseInfoPage/>}/>
+                </Route>
             </Routes>
         </section>
     </div>

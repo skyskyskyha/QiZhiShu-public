@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {Pagination} from "@mui/material";
 import {Tabs} from "@mui/material";
 import {Tab} from "@mui/material";
 import DisplayCard from "./DisplayCard";
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
+
+
 
     return (value === index &&
         <div

@@ -1,7 +1,9 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import AddTaskIcon from '@mui/icons-material/AddTask';
 import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
 const DisplayCard = () => {
+
+
     return (
         <div className={'display-card-main'}>
             <div className={'display-card-preview'}

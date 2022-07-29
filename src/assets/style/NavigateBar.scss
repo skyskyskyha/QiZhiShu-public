@@ -5,6 +5,7 @@ $button-shadow: 0 5px 5px rgba(0,0,0,0.05);
   background: white;
   color: white;
   position: sticky;
+  z-index: 1;
   top: 0;
   display: flex;
   justify-content: space-between;
