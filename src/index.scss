@@ -17,6 +17,7 @@ code {
   display: flex;
   flex-direction: row;
   width: 100%;
+  height: calc(100% - 60px)
 }
 * {
   box-sizing: border-box;

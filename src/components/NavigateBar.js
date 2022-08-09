@@ -43,8 +43,8 @@ export default class NavigateBar extends React.Component {
                     <ul className="nav-browse-menu">
                         {
                             NavLinks.map(link =>
-                            <li>
-                                <NavLink to={link.to} activeClassName={"active"}>{link.name}</NavLink>
+                            <li key={link.name}>
+                                <NavLink to={link.to}>{link.name}</NavLink>
                             </li>)
                         }
                     </ul>

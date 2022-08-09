@@ -5,6 +5,7 @@ import 'font-awesome/css/font-awesome.min.css';
 import {Routes, Route, Link, Navigate} from 'react-router-dom'
 import CoursePage from "./components/CoursePage";
 import CourseInfoPage from "./components/CourseInfoPage";
+import ProblemPage from "./components/ProblemPage";
 function App() {
   return (
     <div className="App">
@@ -16,6 +17,7 @@ function App() {
                     <Route path="overview" element={<CoursePage/>}/>
                     <Route path="info/:id" element={<CourseInfoPage/>}/>
                 </Route>
+                <Route path="problem/:id" element={<ProblemPage/>}/>
             </Routes>
         </section>
     </div>
