@@ -3,6 +3,9 @@ import {Pagination} from "@mui/material";
 import {Tabs} from "@mui/material";
 import {Tab} from "@mui/material";
 import DisplayCard from "./DisplayCard";
+
+const courseIds = [1, 2, 3, 4, 5, 6]
+
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
 
@@ -15,12 +18,8 @@ function TabPanel(props) {
             {...other}
         >
             <ul className={'course-display-ul'}>
-                <li><DisplayCard/></li>
-                <li><DisplayCard/></li>
-                <li><DisplayCard/></li>
-                <li><DisplayCard/></li>
-                <li><DisplayCard/></li>
-                <li><DisplayCard/></li>
+                {courseIds.map(id =>
+                    <li key={id}><DisplayCard courseId={1}/></li>)}
             </ul>
             <Pagination count={10}></Pagination>
         </div>

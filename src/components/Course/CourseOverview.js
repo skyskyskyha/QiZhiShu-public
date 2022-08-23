@@ -5,12 +5,12 @@ import {LinearProgress} from "@mui/material";
 const CourseOverview = (props) => {
     return (
         <div className={'course-info-sidecard'}>
-          <h4> scratch图形化编程L1 </h4>
+          <h4> {props.info.name} </h4>
           <div>
             <InsightsRounded color={'secondary'} sx={{
               height: "18px",
               width: "18px"
-            }}/><span className={'sidecard-desc'}> <b>难度等级: </b> L1</span>
+            }}/><span className={'sidecard-desc'}> <b>难度等级: </b> {props.info.difficulty}</span>
           </div>
 
           <div>

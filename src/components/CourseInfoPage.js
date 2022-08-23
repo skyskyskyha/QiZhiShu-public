@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
 import '../assets/style/CourseInfoPage.scss'
 import CourseOverview from "./Course/CourseOverview";
 import CourseRanking from "./Course/CourseRanking";
-import Tabs from "@mui/material/Tabs"
-import Tab from "@mui/material/Tab"
+import {Tabs, Tab} from "@mui/material"
 import CourseContent from "./Course/CourseContent";
+import {getCourseDetail} from "../api/Course";
 
 const TabPanel = (props) => {
     const {children, option, index, ...other} = props
@@ -16,14 +16,35 @@ const TabPanel = (props) => {
 
 const CourseInfoPage = (props) => {
     const [option, setOption] = useState(0)
+    const [state, setState] = useState({
+    })
+    const id = useParams().id
 
+    useEffect(() => {
+        getCourseDetail(id)
+            .then(data => {
+                const info = data.data.ClazzInfo
+                setState({
+                    name: info.ClassName,
+                    desc: info.Description,
+                    teachers: info.TeacherInfo,
+                    id,
+                    owner: info.Owner,
+                    maxStudent: info.MaxStudent,
+                    difficulty: "L1"
+                })
+            })
+    }, [])
     const handleTabChange = (e, newOption) => {
         setOption(newOption)
     }
     return (
         <div className={"course-wrap flex-all-center course-info"}>
             <section className={'course-info-sidebar flex-all-center'}>
-                <CourseOverview finished={64} total={114}/>
+                <CourseOverview finished={64}
+                                total={114}
+                                info={state}
+                />
                 <CourseRanking/>
             </section>
             <section className={'course-info-main flex-all-center'}>
