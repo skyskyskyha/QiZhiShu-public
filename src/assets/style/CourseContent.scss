@@ -19,6 +19,12 @@
         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       }
     }
+    .MuiFormControlLabel-label {
+      font-size: 14px;
+    }
+    .MuiSwitch-root {
+      margin: 0 10px;
+    }
   }
 }
 .accordion-detail {

@@ -1,9 +1,10 @@
 import React from 'react';
-import {Accordion, AccordionDetails, AccordionSummary} from "@mui/material";
-import {Typography} from "@mui/material";
+import {Typography, Accordion, AccordionSummary, FormControlLabel} from "@mui/material";
+import {} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "../../assets/style/CourseContent.scss"
 import Stepper from "./CourseCodingProgress"
+import IOSSwitch from "../IOSSwitch";
 
 const testCourse = [
     {
@@ -15,6 +16,8 @@ const testCourse = [
         step: 0
     }
 ]
+
+
 
 const CourseContent = () => {
     const [expanded, setExpanded] = React.useState([]);
@@ -34,6 +37,12 @@ const CourseContent = () => {
                 小学组
               </Typography>
               <ul className={"course-content-interact"}>
+                  <FormControlLabel
+                      onClick={e => e.stopPropagation()}
+                      control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+                      label="开启课程"
+                  />
+
                   <li style={{backgroundColor: "mediumpurple"}}>章节排名</li>
                   <li style={{backgroundColor: "violet"}}>在线编程</li>
               </ul>

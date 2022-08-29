@@ -1,5 +1,6 @@
 import React from 'react';
 import {AccessTime, InsightsRounded} from "@mui/icons-material";
+import {Avatar, AvatarGroup} from "@mui/material";
 import {LinearProgress} from "@mui/material";
 
 const CourseOverview = (props) => {
@@ -24,6 +25,22 @@ const CourseOverview = (props) => {
               borderRadius: "50px"
             }}/>
           </div>
+            <div className={'course-teachers'}>
+                <div>
+                    <span className={'sidecard-desc'}><b>创建者</b></span>
+                    <Avatar alt="" src={require("../../assets/img/avatar.jpg")}
+                            sx={{width: "40px", height: "40px"}}/>
+                </div>
+                <div>
+                    <span className={'sidecard-desc'}><b>教师</b></span>
+                    {/*<AvatarGroup max={4}>*/}
+                    {/*    {   props.info.teachers? */}
+                    {/*        props.info.teachers.map((d, index) =><Avatar key={`teacher-${index}`} alt="" src={require("../../assets/img/avatar.jpg")}*/}
+                    {/*                                         sx={{width: "40px", height: "40px"}}/>)}*/}
+                    {/*</AvatarGroup>*/}
+                </div>
+
+            </div>
         </div>
     );
 }

@@ -21,7 +21,7 @@ const DisplayCard = (props) => {
     useEffect(() => {
         getCourseDetail(props.courseId)
             .then(data => {
-                const info = data.data.ClazzInfo
+                const info = data.data.ClassInfo
                 setState({
                     name: info.ClassName,
                     desc: info.Description,

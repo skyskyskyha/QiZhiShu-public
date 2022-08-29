@@ -32,7 +32,7 @@
   & > div {
     margin: 5px 0;
   }
-  img {
+  .sidecard-row > img {
     width: 50%;
   }
   .sidecard-row {
@@ -73,4 +73,14 @@
   border-radius: 15px;
   background-color: white;
   margin: 10px;
+}
+.course-teachers {
+  display: flex;
+  justify-content: flex-start;
+  & > div {
+    width: 50%;
+  }
+  .MuiAvatarGroup-root {
+    justify-content: flex-end;
+  }
 }
