@@ -33,11 +33,14 @@ const CourseOverview = (props) => {
                 </div>
                 <div>
                     <span className={'sidecard-desc'}><b>教师</b></span>
-                    {/*<AvatarGroup max={4}>*/}
-                    {/*    {   props.info.teachers? */}
-                    {/*        props.info.teachers.map((d, index) =><Avatar key={`teacher-${index}`} alt="" src={require("../../assets/img/avatar.jpg")}*/}
-                    {/*                                         sx={{width: "40px", height: "40px"}}/>)}*/}
-                    {/*</AvatarGroup>*/}
+                    {props.info.teachers &&
+                        <AvatarGroup max={4}>
+                            {props.info.teachers.map((d, index) =>
+                                <Avatar key={`teacher-${index}`} alt="" src={require("../../assets/img/avatar.jpg")}
+                                                                     sx={{width: "40px", height: "40px"}}/>)}
+                        </AvatarGroup>
+                    }
+
                 </div>
 
             </div>
