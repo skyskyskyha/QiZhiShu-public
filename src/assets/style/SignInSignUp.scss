@@ -1,0 +1,28 @@
+.sign-in-dialog {
+  padding: 10px 20px;
+  border-radius: 20px;
+  min-width: 600px;
+  h2 {
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .dialog-input-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    flex-wrap: wrap;
+    .MuiFormControl-root {
+      width: calc(50% - 10px);
+      margin: 5px 0;
+    }
+  }
+  .dialog-buttons {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    button {
+      margin: 10px;
+    }
+  }
+}
