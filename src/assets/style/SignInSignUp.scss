@@ -1,10 +1,72 @@
 .sign-in-dialog {
-  padding: 10px 20px;
+  padding: 40px 56px;
   border-radius: 20px;
   min-width: 600px;
+  overflow: visible;
   h2 {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 36px;
+    font-weight: 700;
+    color: #323232;
+    margin: 0;
+  }
+  .sign-in-step {
+    font-weight: bolder;
+    color: #747474;
+    font-size: 14px;
+  }
+  .sign-in-divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    font-size: 17px;
+    margin: 15px 5px;
+    color: #4b4b4b;
+    &::before, &::after {
+      content: "";
+      border-bottom: 1px solid #eaeaea;
+      flex: 1;
+      -webkit-box-flex: 1;
+      margin: 0 15px;
+    }
+  }
+  .sign-in-has-account {
+    margin-bottom: 20px;
+    p {
+      margin: 0;
+      font-size: 16px;
+      color: #505050;
+      font-weight: 700;
+    }
+    a {
+      cursor: pointer;
+      color: #1453ad;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  .sign-in-alt {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+    li {
+      border-radius: 50%;
+      background-color: #323232;
+      height: 50px;
+      width: 50px;
+      position: relative;
+      transition: all 0.3s;
+      cursor: pointer;
+      &:hover {
+        box-shadow: 0 5px 15px rgba($color: #000000, $alpha: 0.2);
+      }
+    }
+    svg {
+      font-size: 36px;
+      & > path {
+        color: white;
+      }
+    }
   }
   .dialog-input-container {
     display: flex;
@@ -13,13 +75,13 @@
     flex-wrap: wrap;
     .MuiFormControl-root {
       width: calc(50% - 10px);
-      margin: 5px 0;
+      margin: 2px 0;
     }
   }
   .dialog-buttons {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     button {
       margin: 10px;

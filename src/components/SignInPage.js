@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import {Dialog, TextField, Button} from '@mui/material';
-
+import {Dialog, TextField, Button, Tooltip} from '@mui/material';
+import {WechatOutlined} from '@ant-design/icons'
 import "../assets/style/SignInSignUp.scss"
 export default function FormDialog(props) {
 
@@ -39,7 +39,7 @@ export default function FormDialog(props) {
                 newStatus = !value.phoneNumber || /^1[3|4|5|6|7|8|9][0-9]\d{8}$/.test(value.phoneNumber)
                 break
             case "confirmPassword":
-                newStatus = value.password && value.password === value.confirmPassword
+                newStatus = !value.password || value.password && (value.password === value.confirmPassword)
                 break
             case "password":
                 newStatus = value.password && /^(?=.*\d)(?=.*[a-zA-Z]).{8,16}$/.test(value.password)
@@ -54,7 +54,31 @@ export default function FormDialog(props) {
 
             <Dialog open={props.open} onClose={props.handleClose}>
                 <div className={'sign-in-dialog'}>
-                    <h2>新用户注册</h2>
+                    <span className='sign-in-step'>
+                        第1步，共2步
+                    </span>
+                    <h2>创建账户</h2>
+                    <ul className='sign-in-alt'>
+                        <li>
+                            <Tooltip title='使用微信登录' placement='top'>
+                                <WechatOutlined className='position-absolute-centering'/>
+
+                            </Tooltip>
+
+                        </li>
+                    </ul>
+                    <div className='sign-in-divider'>
+                        或者
+                    </div>
+                    <section className='sign-in-has-account'>
+                        <p>
+                            使用电话号码注册
+                        </p>
+                        <span>
+                        已经有账户？<a>登录</a>
+                        </span>
+
+                    </section>
                     <div className={'dialog-input-container'}>
                         <TextField
                             error={!status.phoneNumber}
@@ -63,13 +87,6 @@ export default function FormDialog(props) {
                             onChange={handleChange("phoneNumber")}
                             label="注册使用电话号码"
                             helperText={!status.phoneNumber? "请输入正确的手机号": " "}
-                        />
-                        <TextField
-                            value={value.captcha}
-                            error={!status.captcha}
-                            onChange={handleChange("captcha")}
-                            label="短信验证码"
-                            helperText={!status.captcha? "验证码错误": " "}
                         />
                         <TextField
                             value={value.username}
