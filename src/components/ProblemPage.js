@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import CodeEditor from "./CodeEditor";
 import ProblemDescription from "./Course/ProblemDescription";
 import {Snackbar, Alert} from "@mui/material";
 
-
 const ProblemPage = () => {
+
+
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;

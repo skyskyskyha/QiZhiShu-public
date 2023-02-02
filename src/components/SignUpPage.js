@@ -24,7 +24,7 @@ const SignUpPage = (props) => {
             [prop]: value
         })
     }
-    const handleSignUp = () => {
+    const handleSignIn = () => {
         if (!value.phoneNumber) {
             changeStatus('phoneNumber', false)
         }
@@ -72,7 +72,7 @@ const SignUpPage = (props) => {
                         />
                     </div>
                     <div className={'dialog-buttons'}>
-                        <Button variant="outlined" onClick={handleSignUp}>
+                        <Button variant="outlined" onClick={handleSignIn}>
                             登录
                         </Button>
                     </div>

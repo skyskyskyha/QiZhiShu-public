@@ -2,9 +2,15 @@ import React, {useState} from 'react';
 import {Dialog, TextField, Button, Tooltip} from '@mui/material';
 import {WechatOutlined} from '@ant-design/icons'
 import "../assets/style/SignInSignUp.scss"
+import md5 from 'js-md5'
+import { registerUser } from '../api/User';
+
+import {useSelector, useDispatch} from 'react-redux'
+import {signIn, signOut} from '../redux/SignInSlice'
+
 export default function FormDialog(props) {
-
-
+    const dispatch = useDispatch()
+    const signInStatus = useSelector(state => state.SignInStatus)
     const [value, setValue] = useState({
         username: "",
         password: "",
@@ -44,12 +50,42 @@ export default function FormDialog(props) {
             case "password":
                 newStatus = value.password && /^(?=.*\d)(?=.*[a-zA-Z]).{8,16}$/.test(value.password)
                 break
+            case "username":
+                newStatus = !!value.username
             default:
                 break
         }
         changeStatus(prop, newStatus)
     }
+    const handleSubmit = () => {
+        validateInput('phoneNumber')
+        validateInput('confirmPassword')
+        validateInput('password')
+        validateInput('username')
+        if (!status.phoneNumber || !value.phoneNumber)
+            return false
+        if (!status.password || !value.password)
+            return false
+        if (!status.confirmPassword)
+            return false
+        if (!status.username)
+            return false
+        const passwordMd5 = md5(value.password)
 
+        registerUser({
+            UserName: value.username,
+            Mobile: value.phoneNumber,
+            Password: passwordMd5,
+            Birthday: "2000-11-11",
+            Avatar: "string",
+            InstitutionID: 1
+        }).then(res => {
+            const token = res.data.token
+            dispatch(signIn(token))
+        }).catch(err => {
+            alert('failure')
+        })
+    }
     return (
 
             <Dialog open={props.open} onClose={props.handleClose}>
@@ -91,19 +127,21 @@ export default function FormDialog(props) {
                         <TextField
                             value={value.username}
                             onChange={handleChange("username")}
+                            error={!status.username}
+                            onBlur={validateInput("username")}
                             label="姓名"
-                            helperText=" "
+                            helperText={!status.username? "用户名不能为空": " "}
                         />
                     </div>
                     <div className={'dialog-input-container'}>
                         <TextField
                             type="password"
                             value={value.password}
-                            error={status.password === 'error'}
+                            error={!status.password}
                             onBlur={validateInput("password")}
                             onChange={handleChange("password")}
                             label="密码"
-                            helperText="8-16位密码"
+                            helperText="8-16位密码(同时包含字母和数字)"
                         />
                         <TextField
                             type="password"
@@ -116,7 +154,7 @@ export default function FormDialog(props) {
                         />
                     </div>
                     <div className={'dialog-buttons'}>
-                        <Button variant="outlined">
+                        <Button variant="outlined" onClick={handleSubmit}>
                             确认注册
                         </Button>
                     </div>

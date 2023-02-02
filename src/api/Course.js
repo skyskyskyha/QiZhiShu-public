@@ -8,3 +8,11 @@ export const getCourseDetail = (id) => {
     })
 }
 
+export const getProblemInfo = (id) => {
+    return request({
+        url: `/problem/${id}`,
+        method: 'get'
+    })
+}
+
+
