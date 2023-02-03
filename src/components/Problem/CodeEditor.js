@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import '../assets/style/ProblemPage.scss'
+import '../../assets/style/ProblemPage.scss'
 import AceEditor from "react-ace";
 import Select from "@mui/material/Select"
 import MenuItem from "@mui/material/MenuItem";
@@ -14,7 +14,7 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-cloud9_day"
 import "ace-builds/src-noconflict/ext-language_tools";
-import ProblemDescription from "./Course/ProblemDescription";
+import ProblemDescription from "../Course/ProblemDescription";
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({

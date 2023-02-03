@@ -8,3 +8,10 @@ export const registerUser = (prop) => {
     })
 
 }
+export const signInUser = (prop) => {
+    return request({
+        url: `/user/UserLogin`,
+        method: 'post',
+        data: prop
+    })
+}

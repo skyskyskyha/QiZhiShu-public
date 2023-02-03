@@ -1,11 +1,11 @@
 import React, {useState, useEffect} from 'react';
 import {useParams} from "react-router-dom";
-import '../assets/style/CourseInfoPage.scss'
-import CourseOverview from "./Course/CourseOverview";
-import CourseRanking from "./Course/CourseRanking";
+import '../../assets/style/CourseInfoPage.scss'
+import CourseOverview from "./CourseOverview";
+import CourseRanking from "./CourseRanking";
 import {Tabs, Tab} from "@mui/material"
-import CourseContent from "./Course/CourseContent";
-import {getCourseDetail} from "../api/Course";
+import CourseContent from "./CourseContent";
+import {getCourseDetail} from "../../api/Course";
 
 const TabPanel = (props) => {
     const {children, option, index, ...other} = props

@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {Dialog, TextField, Button, Tooltip} from '@mui/material';
 import {WechatOutlined} from '@ant-design/icons'
-import "../assets/style/SignInSignUp.scss"
+import "../../assets/style/SignInSignUp.scss"
 import md5 from 'js-md5'
-import { registerUser } from '../api/User';
+import { registerUser } from '../../api/User';
 
 import {useSelector, useDispatch} from 'react-redux'
-import {signIn, signOut} from '../redux/SignInSlice'
+import {signIn, signOut} from '../../redux/SignInSlice'
+import { raiseError } from '../../redux/ErrorSlice';
+import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
 
 export default function FormDialog(props) {
     const dispatch = useDispatch()
@@ -23,7 +25,9 @@ export default function FormDialog(props) {
         password: true,
         phoneNumber: true,
         captcha: true,
-        confirmPassword: true
+        confirmPassword: true,
+        requestPending: false,
+        signUpSuccess: false
     })
     const handleChange = (prop) => (event) => {
         setValue({
@@ -71,7 +75,7 @@ export default function FormDialog(props) {
         if (!status.username)
             return false
         const passwordMd5 = md5(value.password)
-
+        changeStatus('requestPending', true)
         registerUser({
             UserName: value.username,
             Mobile: value.phoneNumber,
@@ -81,22 +85,31 @@ export default function FormDialog(props) {
             InstitutionID: 1
         }).then(res => {
             const token = res.data.token
-            dispatch(signIn(token))
+            dispatch(signIn({
+                token,
+                phoneNumber: value.phoneNumber
+            }))
+            changeStatus('signInSuccess', true)
+            setTimeout(() => {
+                changeStatus('signInSuccess', false)
+                changeStatus('requestPending', false)
+                props.handleClose()
+            }, 1000)
         }).catch(err => {
-            alert('failure')
+            changeStatus('requestPending', false)
         })
     }
     return (
 
             <Dialog open={props.open} onClose={props.handleClose}>
                 <div className={'sign-in-dialog'}>
-                    <span className='sign-in-step'>
+                    {/* <span className='sign-in-step'>
                         第1步，共2步
-                    </span>
+                    </span> */}
                     <h2>创建账户</h2>
                     <ul className='sign-in-alt'>
                         <li>
-                            <Tooltip title='使用微信登录' placement='top'>
+                            <Tooltip title='使用微信登录' placement='top' onClick={() => dispatch(raiseError("Service Unavailable"))}>
                                 <WechatOutlined className='position-absolute-centering'/>
 
                             </Tooltip>
@@ -155,7 +168,9 @@ export default function FormDialog(props) {
                     </div>
                     <div className={'dialog-buttons'}>
                         <Button variant="outlined" onClick={handleSubmit}>
-                            确认注册
+                            {status.requestPending && !status.signInSuccess ? <div><LoadingOutlined/>提交中</div> : 
+                                status.signInSuccess ? <div><CheckOutlined/>注册成功</div> : 
+                                "确认注册"}
                         </Button>
                     </div>
                 </div>

@@ -1,8 +1,17 @@
 import React, {useState} from 'react'
 import {Dialog, TextField, Button, Tooltip} from '@mui/material';
 import {WechatOutlined} from '@ant-design/icons'
-import "../assets/style/SignInSignUp.scss"
+import "../../assets/style/SignInSignUp.scss"
+import { signInUser } from '../../api/User';
+import md5 from 'js-md5';
+import { signIn } from '../../redux/SignInSlice';
+import { raiseError } from '../../redux/ErrorSlice';
+import { useDispatch } from 'react-redux';
+import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
+
 const SignUpPage = (props) => {
+    const dispatch = useDispatch()
+
 
     const [value, setValue] = useState({
         phoneNumber: "",
@@ -10,7 +19,9 @@ const SignUpPage = (props) => {
     })
     const [status, setStatus] = useState({
         phoneNumber: true,
-        password: true
+        password: true,
+        requestPending: false,
+        signInSuccess: false
     })
     const handleChange = (prop) => (event) => {
         setValue({
@@ -25,10 +36,36 @@ const SignUpPage = (props) => {
         })
     }
     const handleSignIn = () => {
-        if (!value.phoneNumber) {
+        if (!value.phoneNumber)
             changeStatus('phoneNumber', false)
+        if (!value.password)
+            changeStatus('password', false)
+
+
+        if (value.phoneNumber && value.password && !status.requestPending) {
+            changeStatus('requestPending', true)
+            const passwordMd5 = md5(value.password)
+            signInUser({
+                Mobile: value.phoneNumber,
+                Password: passwordMd5
+            })
+            .then(res => {
+                const token = res.data.token
+                dispatch(signIn({
+                    token,
+                    phoneNumber: value.phoneNumber
+                }))
+                changeStatus('signInSuccess', true)
+                setTimeout(() => {
+                    changeStatus('signInSuccess', false)
+                    changeStatus('requestPending', false)
+                    props.handleClose()
+                }, 1000)
+            })
+            .catch(err => {
+                changeStatus('requestPending', false)
+            })
         }
-        
     }
     
     return <Dialog open={props.open} onClose={props.handleClose}>
@@ -36,7 +73,7 @@ const SignUpPage = (props) => {
                     <h2>登录</h2>
                     <ul className='sign-in-alt'>
                         <li>
-                            <Tooltip title='使用微信登录' placement='top'>
+                            <Tooltip title='使用微信登录' placement='top' onClick={() => dispatch(raiseError("Service Unavailable"))}>
                                 <WechatOutlined className='position-absolute-centering'/>
 
                             </Tooltip>
@@ -66,14 +103,17 @@ const SignUpPage = (props) => {
                         <TextField
                             type="password"
                             value={value.password}
-                            error={status.password === 'error'}
+                            error={!status.password}
                             onChange={handleChange("password")}
                             label="密码"
+                            helperText={!status.password? "请输入正确的密码": " "}
                         />
                     </div>
                     <div className={'dialog-buttons'}>
-                        <Button variant="outlined" onClick={handleSignIn}>
-                            登录
+                        <Button variant="outlined" onClick={handleSignIn} >
+                            {status.requestPending && !status.signInSuccess ? <div><LoadingOutlined/>提交中</div> : 
+                            status.signInSuccess ? <div><CheckOutlined/>登陆成功</div> : 
+                            "确认提交"}
                         </Button>
                     </div>
                 </div>

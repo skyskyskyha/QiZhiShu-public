@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
-import '../assets/style/CoursePage.scss'
-import CourseNavMenu from "./Course/CourseNavMenu";
-import Button from "./Button";
-import CourseDisplay from "./Course/CourseDisplay";
+import '../../assets/style/CoursePage.scss'
+import CourseNavMenu from "./CourseNavMenu";
+import Button from "../Button";
+import CourseDisplay from "./CourseDisplay";
 import {Routes, Route} from "react-router-dom";
 import axios from 'axios'
 const options = [

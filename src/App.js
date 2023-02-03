@@ -3,9 +3,9 @@ import './App.css';
 import NavigateBar from "./components/NavigateBar";
 import 'font-awesome/css/font-awesome.min.css';
 import {Routes, Route, Link, Navigate} from 'react-router-dom'
-import CoursePage from "./components/CoursePage";
-import CourseInfoPage from "./components/CourseInfoPage";
-import ProblemPage from "./components/ProblemPage";
+import CoursePage from "./components/Course/CoursePage";
+import CourseInfoPage from "./components/Course/CourseInfoPage";
+import ProblemPage from "./components/Problem/ProblemPage";
 import { Provider } from 'react-redux';
 import store from './store'
 import ErrorPage from './components/ErrorPage';
