@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import CodeEditor from "./CodeEditor";
-import ProblemDescription from "../Course/ProblemDescription";
+import ProblemDescription from "./ProblemDescription";
 import {Snackbar, Alert} from "@mui/material";
 
 const ProblemPage = () => {

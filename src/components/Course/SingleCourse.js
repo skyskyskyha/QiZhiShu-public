@@ -5,23 +5,12 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "../../assets/style/CourseContent.scss"
 import Stepper from "./CourseCodingProgress"
 import IOSSwitch from "../IOSSwitch";
+import {NavLink} from "react-router-dom";
+import {getProblemInfo} from "../../api/Course";
+import problemInfo from "../../static/problemInfo.json"
 
-const testCourse = [
-    {
-        name: "1068 拼接",
-        step: 2
-    },
-    {
-        name: "1069 傻瓜电梯",
-        step: 0
-    },
-    {
-        name: "认识python",
-        step: 1
-    }
-]
 
-const SingleCourse = () => {
+const SingleCourse = (props) => {
     const [expanded, setExpanded] = React.useState([]);
     const handleChange = (panel) => (event, newExpanded) => {
         setExpanded(newExpanded ? panel : false);
@@ -36,7 +25,7 @@ const SingleCourse = () => {
                     sx={{backgroundColor: "#f3f3f3"}}
                 >
                     <Typography sx={{ width: '33%', flexShrink: 0 }}>
-                        第一课
+                        {props.title}
                     </Typography>
                     <ul className={"course-content-interact"}>
                         <FormControlLabel
@@ -51,8 +40,10 @@ const SingleCourse = () => {
                 </AccordionSummary>
                 <ul className={'accordion-detail'}>
                     {
-                        testCourse.map(course => <li key={course.name}>
-                            <span>{course.name}</span>
+                        props.courses.map(course => <li key={course.name}>
+                            <NavLink to={`/problem/${course.problemId}`}>
+                                {problemInfo[course.problemId].title}
+                            </NavLink>
                             <Stepper step={course.step}/>
                         </li>)
                     }

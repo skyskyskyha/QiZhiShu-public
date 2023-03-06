@@ -26,10 +26,10 @@
   justify-content: space-between;
   & > button {
     transition: all 0.3s;
-    background-color: mediumpurple;
+    background-color: green;
     color: white;
     padding: 10px 20px;
-    border: 1px solid mediumpurple;
+    border: 1px solid green;
     &:hover {
       background-color: transparent;
       color: mediumpurple;
@@ -80,6 +80,9 @@
         color: #868686;
       }
       &:nth-child(2) {
+        border-left: 1px solid #e7e7e7;
+      }
+      &:nth-child(3) {
         border-left: 1px solid #e7e7e7;
       }
     }
