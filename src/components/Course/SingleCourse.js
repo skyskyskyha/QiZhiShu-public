@@ -6,7 +6,6 @@ import "../../assets/style/CourseContent.scss"
 import Stepper from "./CourseCodingProgress"
 import IOSSwitch from "../IOSSwitch";
 import {NavLink} from "react-router-dom";
-import {getProblemInfo} from "../../api/Course";
 import problemInfo from "../../static/problemInfo.json"
 
 

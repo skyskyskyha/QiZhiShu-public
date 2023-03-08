@@ -5,6 +5,7 @@ import CourseOverview from "./CourseOverview";
 import CourseRanking from "./CourseRanking";
 import {Tabs, Tab} from "@mui/material"
 import CourseContent from "./CourseContent";
+import PracticeIndex from "./PracticeIndex";
 import {getCourseDetail} from "../../api/Course";
 
 const TabPanel = (props) => {
@@ -56,7 +57,7 @@ const CourseInfoPage = (props) => {
                         <Tab label={"排位"}></Tab>
                     </Tabs>
                     <TabPanel option={option} index={0}><CourseContent/></TabPanel>
-                    <TabPanel option={option} index={1}>2</TabPanel>
+                    <TabPanel option={option} index={1}><PracticeIndex/></TabPanel>
                     <TabPanel option={option} index={2}>3</TabPanel>
                     <TabPanel option={option} index={3}>4</TabPanel>
                 </div>
