@@ -2,15 +2,6 @@ import * as React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
 
 
-function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
-) {
-    return { name, calories, fat, carbs, protein };
-}
 
 const columns = [
     { field: 'id', headerName: '位次', width: 100 },
@@ -27,11 +18,13 @@ const columns = [
     },
 ]
 
-const rows = [
+const temprows = [
     {id: 1, name: "张三", submits:"100", corrects:"100"},
     {id: 2, name: "李四", submits:"100", corrects:"80"},
     {id: 3, name: "王五", submits:"10", corrects:"1"}
 ];
+
+const rows=temprows;
 
 export default function BasicTable() {
     return (
@@ -41,7 +34,6 @@ export default function BasicTable() {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
-                checkboxSelection
             />
         </div>
     );
