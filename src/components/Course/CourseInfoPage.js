@@ -8,6 +8,7 @@ import CourseContent from "./CourseContent";
 import PracticeIndex from "./PracticeIndex";
 import JudgingStatus from "./JudgingStatus";
 import {getCourseDetail} from "../../api/Course";
+import RankingPage from "./RankingPage";
 
 const TabPanel = (props) => {
     const {children, option, index, ...other} = props
@@ -60,7 +61,7 @@ const CourseInfoPage = (props) => {
                     <TabPanel option={option} index={0}><CourseContent/></TabPanel>
                     <TabPanel option={option} index={1}><PracticeIndex/></TabPanel>
                     <TabPanel option={option} index={2}><JudgingStatus/></TabPanel>
-                    <TabPanel option={option} index={3}>4</TabPanel>
+                    <TabPanel option={option} index={3}><RankingPage/></TabPanel>
                 </div>
             </section>
         </div>

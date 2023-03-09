@@ -1,22 +1,20 @@
 import * as React from 'react';
 import { DataGrid, GridColDef, GridValueGetterParams } from '@mui/x-data-grid';
+import clsx from "clsx";
+import {GridCellParams} from "@mui/x-data-grid";
 
-
-function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
-) {
-    return { name, calories, fat, carbs, protein };
-}
 
 const columns = [
     { field: 'id', headerName: '提交编号', width: 100 },
-    { field: 'problemId', headerName: '问题ID', width: 100 },
+    { field: 'problemId', headerName: '问题ID', width: 100},
     { field: 'name', headerName: '用户', width: 130 },
-    { field: 'result', headerName: '结果', width: 100 },
+    { field: 'result', headerName: '结果', width: 100,
+        cellClassName: (params: GridCellParams<number>) =>
+            clsx('super-app', {
+                correct: params.value === "答案正确",
+                incorrect: params.value !== "答案正确"
+            }),
+    },
     { field: 'score', headerName: '得分', width: 100 },
     { field: 'memory', headerName: '内存(KB)', width: 100 },
     { field: 'time', headerName: '耗时(MS)', width: 100 },
@@ -47,6 +45,27 @@ export default function JudgingStatus() {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
+                sx={{
+                    width: '100%',
+                    '& .super-app-theme--cell': {
+                        backgroundColor: 'rgba(224, 183, 60, 0.55)',
+                        color: '#1a3e72',
+                        fontWeight: '600',
+                    },
+                    '& .super-app.correct': {
+                        backgroundColor: 'rgba(157, 255, 118, 0.49)',
+                        color: '#1a3e72',
+                        fontWeight: '600',
+                    },
+                    '& .super-app.incorrect': {
+                        backgroundColor: '#d47483',
+                        color: '#1a3e72',
+                        fontWeight: '600',
+                    },
+                    '& .MuiDataGrid-cell:hover': {
+                        color: "blueviolet",
+                    }
+                }}
             />
         </div>
     );

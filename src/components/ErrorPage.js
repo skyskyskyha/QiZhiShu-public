@@ -17,12 +17,9 @@ export default function ErrorPage(props) {
         <Dialog open={errorStatus.errorOccured} onClose={() => {dispatch(resolveError())}}>
             <div className={'sign-in-dialog'}>
                 <h2> Error: {errorStatus.errorType} </h2>
-                <p> 发生错误，见到该页面可能意味着服务器暂时出现故障，你可以刷新后重新提交表单。此外，该对话框很可能意味着当前按钮并不是可交互的按钮，开发者比较懒，有一定几率在后续版本中完善，别骂了 </p>
-                <Button variant="outlined" onClick={closeErrorPage}>
-                    I understand
-                </Button>
+                <p> 发生错误，请返回 </p>
                 <Button variant="outlined" onClick={closeErrorPage} style={{marginLeft: "50px"}}>
-                    我明白
+                    返回
                 </Button>
             </div>
         </Dialog>
