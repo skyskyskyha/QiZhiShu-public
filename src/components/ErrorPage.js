@@ -9,7 +9,6 @@ import { cssClass } from "ace-builds/src-noconflict/theme-monokai";
 export default function ErrorPage(props) {
     const errorStatus = useSelector(state => state.ErrorStatus)
     const dispatch = useDispatch()
-
     const closeErrorPage = () => {
         dispatch(resolveError())
     }

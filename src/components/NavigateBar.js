@@ -24,17 +24,6 @@ const NavLinks = [
 
 
 export default class NavigateBar extends React.Component {
-    state = {};
-
-    constructor(props) {
-        super(props)
-    }
-
-    static propTypes = {};
-
-    componentDidMount() {
-    }
-
     render() {
         return (
             <div className='nav-bar'>

@@ -8,9 +8,6 @@ const courseIds = [1, 2, 3, 4, 5, 6]
 
 function TabPanel(props) {
     const { children, value, index, ...other } = props;
-
-
-
     return (value === index &&
         <div
             role="tabpanel"

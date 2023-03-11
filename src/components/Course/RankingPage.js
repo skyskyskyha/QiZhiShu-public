@@ -17,6 +17,7 @@ const getClass = (str) => {
             return 0;
     }
 }
+
 const classComparator = (s1,s2)=>{
     const class1 = getClass(s1);
     const class2 = getClass(s2);
