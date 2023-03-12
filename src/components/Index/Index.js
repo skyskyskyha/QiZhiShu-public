@@ -2,14 +2,9 @@ import React from 'react';
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-
-const contentStyle: React.CSSProperties = {
-    height: '200px',
-    color: '#fff',
-    lineHeight: '200px',
-    textAlign: 'center',
-    background: '#364d79',
-};
+import img1 from "../../assets/img/image-Example-1.png"
+import img2 from "../../assets/img/image-Example-2.png"
+import '../../assets/style/IndexPage.scss'
 
 const Index = () => {
     const settings = {
@@ -17,31 +12,25 @@ const Index = () => {
         infinite: true,
         speed: 500,
         slidesToShow: 1,
-        slidesToScroll: 1
+        slidesToScroll: 1,
+        autoPlay: true,
     };
+
+    let imgArray = [img1,img2,img1,img2,img1,img2];
+
     return (
         <div>
-            <h2> Single Item</h2>
+            <div style={{width:"1800px"}}>
             <Slider {...settings}>
-                <div>
-                    <h3>1</h3>
-                </div>
-                <div>
-                    <h3>2</h3>
-                </div>
-                <div>
-                    <h3>3</h3>
-                </div>
-                <div>
-                    <h3>4</h3>
-                </div>
-                <div>
-                    <h3>5</h3>
-                </div>
-                <div>
-                    <h3>6</h3>
-                </div>
+                {
+                    imgArray.map((item, id)=>
+                        <div className={"index-img-wrapper"}>
+                            <img src={imgArray[id]}/>
+                        </div>
+                    )
+                }
             </Slider>
+            </div>
         </div>
     );
 }
