@@ -9,6 +9,15 @@ li {
   width: 700px;
 }
 
+.section03 {
+  padding: 40px 0 89px;
+  background: rgb(245,245,245) url(../../assets/img/bg02.jpg) no-repeat center center;
+  .wrap {
+    margin: 0 auto;
+    width: 950px;
+  }
+}
+
 .tabNavi {
   //padding-left: 500px !important;
   li {
@@ -64,4 +73,209 @@ li {
       border-bottom-color: currentcolor;
     }
   }
+}
+
+.section04 {
+  padding: 66px 0 0;
+  height: 460px;
+  box-sizing: border-box;
+  .inner {
+    margin: 0 auto;
+    width: 936px;
+    position: relative;
+    .ttl {
+      margin-bottom: 32px;
+      color: #666;
+      font-size: 15px;
+      span {
+        display: block;
+        color: rgb(115, 60, 188);
+        font-size: 24px;
+        font-weight: bold;
+      }
+      .txt {
+        margin-bottom: 25px;
+        color: #666;
+        font-size: 14px;
+        line-height: 1.9;
+      }
+    }
+    li.li01 {
+      margin-right: 40px;
+      padding-right: 55px;
+      border-right: 2px solid #eee;
+    }
+    li {
+      padding: 0 36px 10px 5px;
+      float: left;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.2;
+      text-align: center;
+
+      span {
+        margin-bottom: 11px;
+        display: block;
+        font-size: 48px;
+      }
+    }
+  }
+  .photoBox {
+    width: 400px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    .img01 {
+      position: absolute;
+      right: 63px;
+      top: 10px;
+      z-index: 3;
+      width: 278px;
+    }
+    .img02 {
+      position: absolute;
+      right: 348px;
+      top: -19px;
+      z-index: 4;
+    }
+    .img03 {
+      position: absolute;
+      right: 19px;
+      top: 279px;
+      z-index: 4;
+    }
+    .img04 {
+      position: absolute;
+      right: 58px;
+      top: -22px;
+      z-index: 2;
+    }
+    .img05 {
+      position: absolute;
+      left: -8px;
+      top: 198px;
+      z-index: 5;
+      width: 166px;
+    }
+    .img06 {
+      position: absolute;
+      left: 19px;
+      top: 14px;
+      width: 300px;
+    }
+  }
+  .txtBox {
+    width: 460px;
+  }
+}
+
+
+
+.section05 {
+  padding: 46px 0 32px;
+  background: #F1F1F1;
+}
+.section05 .wrap {
+  margin: 0 auto;
+  padding-right: 57px;
+  width: 1020px;
+  box-sizing: border-box;
+}
+.section05 .movie {
+  margin: 22px -100px 0 0;
+  width: 540px;
+  height: 400px;
+  float: left;
+  position: relative;
+ background: url(../../assets/img/photo10.jpg) no-repeat center center;
+  background-size: cover;
+}
+.section05 .movie a {
+  display: block;
+  height: 60px;
+  left: 50%;
+  margin-left: -30px;
+  margin-top: -30px;
+  position: absolute;
+  top: 50%;
+  width: 60px;
+  background: url(../../assets/img/mbg01.png) no-repeat -2308px -845px;
+}
+.section05 .txtBox {
+  padding: 70px 34px 0 134px;
+  width: 510px;
+  height: 400px;
+  float: right;
+  box-sizing: border-box;
+  background: #076CE0;
+}
+.section05 .txtBox .ttl {
+  margin-bottom: 38px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.9;
+}
+.section05 .txtBox .ttl span {
+  display: block;
+  font-size: 24px;
+}
+.section05 .txtBox .txt {
+  margin-bottom: 5px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 2;
+}
+.section05 .txtBox .btn {
+  margin-top: 14px;
+}
+.section05 .txtBox .btn a {
+  width: 145px;
+  display: block;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 43px;
+  text-align: center;
+  background: rgba(255, 101, 55, 1);
+  border-radius: 3px;
+}
+
+.cover {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: none;
+  opacity: 0.7;
+  z-index: 9999;
+  background: #000;
+}
+.pop {
+  margin: -300px 0 0 -550px;
+  width: 1100px;
+  height: 600px;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  display: none;
+  z-index: 10000;
+}
+.pop video {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.pop .close {
+  margin-top: 14px;
+  position: absolute;
+  right: 14px;
+  top: 0;
+  z-index: 9999;
+}
+.pop .close a {
+  width: 34px;
+  height: 34px;
+  display: block;
+  background: url(../../assets/img/mbg01.png) no-repeat -2340px -590px;
 }

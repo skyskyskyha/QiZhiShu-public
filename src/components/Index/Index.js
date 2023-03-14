@@ -9,10 +9,38 @@ import img2 from "../../assets/img/image-Example-2.png"
 import teacher1 from "../../assets/img/teacher1.png"
 import teacher2 from "../../assets/img/teacher2.png"
 import abilityRaise from "../../assets/img/abilityRaise.png"
+import caowenpic from "../../assets/img/caowen.jpg"
+import jinbinpic from "../../assets/img/jinbin.jpg"
+import chenjunpic from "../../assets/img/chenjun.jpg"
+import jiangzhongtianpic from "../../assets/img/jiangzhongtian.jpg"
 import {Button, Divider, Typography, Carousel, Space, Popover} from "antd"
 import './index.scss'
+import $ from 'jquery'
 
 const Index = () => {
+    $(function(){
+        $('#main .section05 .movie a,#main .section05 .btn a').click(function(){
+            $('.cover,.pop').fadeIn();
+            return false;
+        });
+        $('.pop .close a').click(function(){
+            $('.cover,.pop').fadeOut();
+            $('.pop video').trigger('pause');
+            return false;
+        });
+
+        $('#main .section02 ul').slick({
+            autoplay: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+        });
+        $('.bannerBox .slider').slick({
+            autoplay: true,
+            prevArrow: '.bannerBox .prev',
+            nextArrow: '.bannerBox .next',
+            speed: 1500
+        });
+    });
     const settings = {
         dots: true,
         infinite: true,
@@ -95,7 +123,7 @@ const Index = () => {
 
 
     return (
-        <Typography>
+        <Typography id="main">
             <section>
                 <div style={{width:"1800px"}}>
                     <Slider {...settings}>
@@ -142,39 +170,82 @@ const Index = () => {
                 <br/>
                 <br/>
             </section>
-            <section>
-                <Title>特别顾问</Title>
-                <blockquote>金牌教练、选手、世界冠军特别顾问支持</blockquote>
-
-                <ul className="tabNavi clearfix">
-
-                    {/*<li><a><span><img src={img1} alt=""/></span></a></li>*/}
-                    {/*<li><a><span><img src={img1} alt=""/></span></a></li>*/}
-                    {/*<li><a><span><img src={img1} alt=""/></span></a></li>*/}
-                </ul>
+            <section className="section03">
+                <section>
+                    <Title>特别顾问</Title>
+                    <blockquote>金牌教练、选手、世界冠军特别顾问支持</blockquote>
+                </section>
+                <Space wrap>
+                    <Popover content={caowen}  trigger="hover">
+                        <ul className="tabNavi">
+                            <li><a><span><img src={caowenpic} alt=""/></span></a></li>
+                        </ul>
+                    </Popover>
+                    <Popover content={jinbin}  trigger="hover">
+                        <ul className="tabNavi">
+                            <li><a><span><img src={jinbinpic} alt=""/></span></a></li>
+                        </ul>
+                    </Popover>
+                    <Popover content={chenjun}  trigger="hover">
+                        <ul className="tabNavi">
+                            <li><a><span><img src={chenjunpic} alt=""/></span></a></li>
+                        </ul>
+                    </Popover>
+                    <Popover content={jiangzhongtian}  trigger="hover">
+                        <ul className="tabNavi">
+                            <li><a><span><img src={jiangzhongtianpic} alt=""/></span></a></li>
+                        </ul>
+                    </Popover>
+                </Space>
             </section>
-            <Space wrap>
-                <Popover content={caowen}  trigger="hover">
-                    <ul className="tabNavi">
-                        <li className="on"><a><span><img src={img1} alt=""/></span></a></li>
-                    </ul>
-                </Popover>
-                <Popover content={jinbin}  trigger="hover">
-                    <ul className="tabNavi">
-                        <li className="on"><a><span><img src={img1} alt=""/></span></a></li>
-                    </ul>
-                </Popover>
-                <Popover content={chenjun}  trigger="hover">
-                    <ul className="tabNavi">
-                        <li className="on"><a><span><img src={img1} alt=""/></span></a></li>
-                    </ul>
-                </Popover>
-                <Popover content={jiangzhongtian}  trigger="hover">
-                    <ul className="tabNavi">
-                        <li className="on"><a><span><img src={img1} alt=""/></span></a></li>
-                    </ul>
-                </Popover>
-            </Space>
+
+            <section className="section04">
+                <div className="wrap">
+                    <div className="inner clearfix">
+                        <div className="photoBox">
+                            <img className="img01" src={[require("../../assets/img/img16.png")]} alt=""/>
+                            <img className="img02" src={[require("../../assets/img/img17.png")]} alt=""/>
+                            <img className="img03" src={[require("../../assets/img/img18.png")]} alt=""/>
+                            <img className="img04" src={[require("../../assets/img/img19.png")]} alt=""/>
+                            <img className="img05" src={[require("../../assets/img/img20.png")]} alt=""/>
+                            <img className="img06" src={[require("../../assets/img/img21.png")]} alt=""/>
+                        </div>
+                        <div className="txtBox">
+                            <p className="ttl"><span>为什么选择我们</span>Why did you choose us ?</p>
+                            <p className="txt">启智树拥有全国一流的课程体系，阵容强大的师资团队、引领行业的教学方法，精英教育品质。</p>
+                            <ul className="clearfix">
+                                <li className="li01"><span>20+</span>教学经验</li>
+                                <li><span>1000+</span>优秀学员</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="section05">
+                <div className="wrap">
+                    <div className="inner clearfix">
+                        <div className="movie"><a href="#"/></div>
+                        <div className="txtBox">
+                            <p className="ttl"><span>程序设计对未来的影响</span> 未来已来，人工智能时代的程序设计</p>
+                            <p className="txt">AI的前世今生，信奥的那些大牛，什么是程序设计?</p>
+                            <p className="txt">C++程序设计对学生能力的培养，我们教学特色？<br/>
+                                您想知道的一切，都可以从本视频中了解<br/>
+                                敬请观看！</p>
+                            <div className="btn"><a href="#">观看视频</a></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div>
+                <div className="cover"/>
+                <div className="pop">
+                    <div className="close"><a href="#"/></div>
+                    <div className="video">
+                        <video src="https://vedio.code101.com.cn/58fc0d5ca9a14d0b91905a37ddeab8eb/858c3ac9f3abb7d7c1bd47f6271c4383-hd.mp4" controls/>
+                    </div>
+                </div>
+            </div>
+
         </Typography>
     );
 }
