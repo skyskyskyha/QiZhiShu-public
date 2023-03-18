@@ -28,18 +28,6 @@ const Index = () => {
             $('.pop video').trigger('pause');
             return false;
         });
-
-        $('#main .section02 ul').slick({
-            autoplay: true,
-            slidesToShow: 2,
-            slidesToScroll: 1,
-        });
-        $('.bannerBox .slider').slick({
-            autoplay: true,
-            prevArrow: '.bannerBox .prev',
-            nextArrow: '.bannerBox .next',
-            speed: 1500
-        });
     });
     const settings = {
         dots: true,
@@ -120,10 +108,8 @@ const Index = () => {
     )
     let imgArray = [img1,img2,img1,img2,img1,img2];
 
-
-
     return (
-        <Typography id="main">
+        <Typography className="main">
             <section>
                 <div style={{width:"1800px"}}>
                     <Slider {...settings}>

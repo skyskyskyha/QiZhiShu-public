@@ -1,0 +1,65 @@
+#footer {
+  padding-bottom: 41px;
+  overflow: auto;
+  display: block;
+  background: #1B1B1B;
+  margin-top: auto;
+    position: relative;
+    bottom: 0;
+
+}
+#footer .fNavi {
+  margin-bottom: 34px;
+  padding: 35px 0 56px;
+  border-bottom: 2px solid #282828;
+}
+#footer .fNavi ul {
+  margin: 0 auto;
+  width: 1200px;
+}
+#footer .fNavi li {
+  margin-right: 130px;
+  float: left;
+  min-width: 50px;
+}
+#footer .fNavi li a {
+  display: block;
+  color: rgb(68, 68, 68);
+  font-size: 16px;
+}
+#footer .fInner {
+  margin: 0 auto;
+  width: 1200px;
+}
+#footer .fInner .ttl {
+  margin-bottom: 21px;
+  color: rgb(68, 68, 68);
+  font-size: 32px;
+  font-weight: bold;
+}
+#footer .fInner .ttl span {
+  color: #ff6537;
+}
+#footer .fInner .img {
+  float: left;
+}
+#footer .fInner .rBox {
+  margin-top: 5px;
+  width: 1020px;
+  float: right;
+}
+#footer .fInner .rBox .txt {
+  margin-bottom: 103px;
+  color: #444;
+  font-size: 14px;
+}
+#footer .fInner .rBox .copy {
+  margin: 0 180px 7px 0;
+  color: rgba(68, 68, 68, 1);
+  font-size: 14px;
+  text-align: center;
+}
+#footer .fInner table {
+  margin: 0 auto;
+  border-spacing: 0;
+}

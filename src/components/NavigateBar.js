@@ -5,6 +5,10 @@ import {NavLink} from 'react-router-dom'
 import NavTools from "./NavTools";
 const NavLinks = [
     {
+      to: "/",
+      name: "首页"
+    },
+    {
         to: "/market",
         name: "课程超市"
     },

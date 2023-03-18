@@ -11,6 +11,8 @@ import store from './store'
 import ErrorPage from './components/ErrorPage';
 import CompetitionPage from "./components/Competition/CompetitionPage";
 import Index from './components/Index/Index'
+import Footer from './components/Footer'
+import "./App.scss"
 
 function App() {
   return (
@@ -42,6 +44,7 @@ function App() {
 
               </Routes>
           </section>
+          <Footer/>
       </div>
     </Provider>
   );
