@@ -36,10 +36,10 @@ const NavToolsRework = () => {
         dispatch(signOut())
         console.log(signInStatus)
     }
-    
+
 
     return <div className="nav-user-icon-container">
-        <button onClick={(e) =>toggleMenu(e)}><i className="fa fa-bars"></i><i className="fa fa-user-circle"></i></button>
+        <button onClick={(e) =>toggleMenu(e)}><i className="fa fa-bars"/><i className="fa fa-user-circle"/></button>
         <ul className={`nav-user-menu nav-user-menu-pos ${menuOpen ? 'nav-menu-open':''}`} >
             {!signInStatus.hasSignedIn && <li onClick={() => setDialog({signIn: false, signUp: true})}><LoginIcon/> <span>Sign In</span> </li>}
             {!signInStatus.hasSignedIn && <li onClick={() => setDialog({signIn: true, signUp: false})}><HowToRegIcon/><span>Sign Up</span> </li>}

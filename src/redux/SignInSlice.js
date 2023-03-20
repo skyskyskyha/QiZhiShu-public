@@ -20,7 +20,6 @@ export const SignInSlice = createSlice({
             store.clearAll()
         }
     }
-
 })
 
 export const {signIn, signOut} = SignInSlice.actions

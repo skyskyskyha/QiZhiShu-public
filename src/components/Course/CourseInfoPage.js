@@ -34,13 +34,15 @@ const CourseInfoPage = (props) => {
                     id,
                     owner: info.Owner,
                     maxStudent: info.MaxStudent,
-                    difficulty: "L1"
+                    difficulty: "L1",
+                    lectureInfo: data.data.DetailSubjectInfo.LectureInfo,
                 })
             })
     }, [])
     const handleTabChange = (e, newOption) => {
         setOption(newOption)
     }
+
     return (
         <div className={"course-wrap flex-all-center course-info"}>
             <section className={'course-info-sidebar flex-all-center'}>
@@ -53,12 +55,12 @@ const CourseInfoPage = (props) => {
             <section className={'course-info-main flex-all-center'}>
                 <div className={'course-info-main-card'}>
                     <Tabs value={option} onChange={handleTabChange} textColor={"secondary"} indicatorColor={"secondary"}>
-                        <Tab label={"课程内容"}></Tab>
-                        <Tab label={"练习指标"}></Tab>
-                        <Tab label={"判题状态"}></Tab>
-                        <Tab label={"排位"}></Tab>
+                        <Tab label={"课程内容"}/>
+                        <Tab label={"练习指标"}/>
+                        <Tab label={"判题状态"}/>
+                        <Tab label={"排位"}/>
                     </Tabs>
-                    <TabPanel option={option} index={0}><CourseContent/></TabPanel>
+                    <TabPanel option={option} index={0}><CourseContent lectureInfo={state.lectureInfo}/></TabPanel>
                     <TabPanel option={option} index={1}><PracticeIndex/></TabPanel>
                     <TabPanel option={option} index={2}><JudgingStatus/></TabPanel>
                     <TabPanel option={option} index={3}><RankingPage/></TabPanel>

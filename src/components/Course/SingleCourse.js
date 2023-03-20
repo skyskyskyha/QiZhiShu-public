@@ -6,8 +6,6 @@ import "../../assets/style/CourseContent.scss"
 import Stepper from "./CourseCodingProgress"
 import IOSSwitch from "../IOSSwitch";
 import {NavLink} from "react-router-dom";
-import problemInfo from "../../static/problemInfo.json"
-
 
 const SingleCourse = (props) => {
     const [expanded, setExpanded] = React.useState([]);
@@ -18,7 +16,7 @@ const SingleCourse = (props) => {
         <section className={"course-content-wrapper"}>
             <Accordion expanded={expanded === 0} onChange={handleChange(0)}>
                 <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
+                    expandIcon={<ExpandMoreIcon/>}
                     aria-controls="panel1bh-content"
                     id="panel1bh-header"
                     sx={{backgroundColor: "#f3f3f3"}}
@@ -32,16 +30,20 @@ const SingleCourse = (props) => {
                             control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
                             label="开启课程"
                         />
-                        <li style={{backgroundColor: "#0703FC"}}>课件PPT</li>
-                        <li style={{backgroundColor: "mediumpurple"}}>章节排名</li>
-                        <li style={{backgroundColor: "violet"}}>在线编程</li>
+                        <li style={{backgroundColor: "#0703FC"}}>
+                            <a href="https://www.baidu.com" target="_blank" style={{textDecoration: "none", color: "yellow"}}>
+                                课件PPT
+                            </a>
+                        </li>
+                        {/*<li style={{backgroundColor: "mediumpurple"}}>章节排名</li>*/}
+                        {/*<li style={{backgroundColor: "violet"}}>在线编程</li>*/}
                     </ul>
                 </AccordionSummary>
                 <ul className={'accordion-detail'}>
                     {
                         props.courses.map(course => <li key={course.name}>
                             <NavLink to={`/problem/${course.problemId}`}>
-                                {problemInfo[course.problemId].title}
+                                {course.name}
                             </NavLink>
                             <Stepper step={course.step}/>
                         </li>)

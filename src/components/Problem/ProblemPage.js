@@ -1,11 +1,12 @@
-import React, {useState, useEffect} from 'react';
-import CodeEditor from "./CodeEditor";
+import React, {useState, useEffect, useRef, createRef} from 'react';
+import CodeEditor, {ForwardChild} from "./CodeEditor";
 import ProblemDescription from "./ProblemDescription";
 import {Snackbar, Alert} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 
 const ProblemPage = () => {
-
-
+    const [code, setCode] = useState("");
+    const navigate = useNavigate();
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
             return;
@@ -14,8 +15,15 @@ const ProblemPage = () => {
     };
     const handleClick = () => {
         setOpen(true);
+        //post the code to judger
+        console.log(code);
+        setTimeout(()=>{
+            console.log("跳转到判题页面中。。。");
+            navigate("/judgingStatus");
+        },2000);
     };
     const [open, setOpen] = useState(false)
+    const problemPageRef = useRef()
     return (
         <div className={"problem-page"}>
             <Snackbar open={open}
@@ -29,7 +37,8 @@ const ProblemPage = () => {
             </Snackbar>
             <div className={"problem-wrapper"}>
                 <ProblemDescription/>
-                <CodeEditor/>
+                {/*<CodeEditor/>*/}
+                <ForwardChild ref={problemPageRef} setCode={setCode}/>
             </div>
 
             <div className={"submit-button-wrapper"}>

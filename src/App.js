@@ -13,6 +13,7 @@ import CompetitionPage from "./components/Competition/CompetitionPage";
 import Index from './components/Index/Index'
 import Footer from './components/Footer'
 import "./App.scss"
+import JudgingStatus from "./components/Course/JudgingStatus";
 
 function App() {
   return (
@@ -41,10 +42,9 @@ function App() {
 
 
                   <Route path="problem/:id" element={<ProblemPage/>}/>
-
+                  <Route path="judgingstatus" element={<JudgingStatus/>}/>
               </Routes>
           </section>
-          <Footer/>
       </div>
     </Provider>
   );

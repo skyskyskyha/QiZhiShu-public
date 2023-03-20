@@ -1,3 +1,8 @@
+a{
+  text-decoration: none;
+  color: black;
+  a:link,a:hover,a:active,a:visited{text-decoration:none;}
+}
 .course-content-wrapper {
   margin: 10px 0;
   text-align: left;

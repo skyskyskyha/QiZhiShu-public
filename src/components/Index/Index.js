@@ -16,11 +16,13 @@ import jiangzhongtianpic from "../../assets/img/jiangzhongtian.jpg"
 import {Button, Divider, Typography, Carousel, Space, Popover} from "antd"
 import './index.scss'
 import $ from 'jquery'
+import Footer from "../Footer";
 
 const Index = () => {
     $(function(){
-        $('#main .section05 .movie a,#main .section05 .btn a').click(function(){
+        $('.main .section05 .movie a,.main .section05 .btn a').click(function(){
             $('.cover,.pop').fadeIn();
+            console.log("观看视频")
             return false;
         });
         $('.pop .close a').click(function(){
@@ -231,7 +233,7 @@ const Index = () => {
                     </div>
                 </div>
             </div>
-
+            <Footer/>
         </Typography>
     );
 }

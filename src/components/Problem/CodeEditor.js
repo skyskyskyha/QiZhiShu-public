@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {forwardRef, useState} from 'react';
 import '../../assets/style/ProblemPage.scss'
 import AceEditor from "react-ace";
 import Select from "@mui/material/Select"
@@ -14,7 +14,6 @@ import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/theme-monokai";
 import "ace-builds/src-noconflict/theme-cloud9_day"
 import "ace-builds/src-noconflict/ext-language_tools";
-import ProblemDescription from "./ProblemDescription";
 
 
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
@@ -65,12 +64,12 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 
-const CodeEditor = () => {
+const CodeEditor = (props, problemPageRef) => {
     const changeMode = (e) => {
         setMode(e.target.value)
     }
 
-    const [code, setCode] = useState("")
+    //const [code, setCode] = useState("")
     const [mode, setMode] = useState('c_cpp')
     const [darkMode, setDarkMode] = useState(false)
     return (
@@ -101,13 +100,14 @@ const CodeEditor = () => {
 
 
                 <AceEditor
+                    ref={problemPageRef}
                     mode={mode}
                     width="100%"
                     height="calc(100% - 60px)"
                     theme={"cloud9-day"}
                     fontSize="16px"
                     onChange={(value) => {
-                        setCode(value)
+                        props.setCode(value)
                     }}
                     name="UNIQUE_ID_OF_DIV"
                     editorProps={{ $blockScrolling: true }}
@@ -122,4 +122,5 @@ const CodeEditor = () => {
     );
 }
 
+export const ForwardChild = forwardRef(CodeEditor);
 export default CodeEditor;

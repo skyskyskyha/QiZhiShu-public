@@ -12,7 +12,6 @@ const ProblemDescription = () => {
     useEffect(() => {
         getProblemInfo(problemId).then(data => {
             const newDesc = data.data
-            console.log(newDesc)
             setDesc({
                 ...desc,
                 name: newDesc.ProblemTitle,
