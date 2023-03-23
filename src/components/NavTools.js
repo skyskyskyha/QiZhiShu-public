@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom";
-import SignInPage from "./User/SignInPage"
-import SignUpPage from "./User/SignUpPage";
+import SignUpPage from "./User/SignUpPage"
+import SignInPage from "./User/SignInPage";
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PeopleOutlineIcon from '@mui/icons-material/PeopleOutline';
 import LoginIcon from '@mui/icons-material/Login';
@@ -46,8 +46,8 @@ const NavToolsRework = () => {
             {signInStatus.hasSignedIn && <li> <PeopleOutlineIcon/><span> Profile </span> </li>}
             {signInStatus.hasSignedIn && <li className="nav-signout" onClick={handleSignOut}><ExitToAppIcon/><span>Sign Out</span> </li>}
         </ul>
-        <SignInPage open={openDialog.signIn} handleClose={() => setDialog({signIn: false, signUp: false})}/>
-        <SignUpPage open={openDialog.signUp} handleClose={() => setDialog({signIn: false, signUp: false})}/>
+        <SignUpPage open={openDialog.signIn} handleClose={() => setDialog({signIn: false, signUp: false})}/>
+        <SignInPage open={openDialog.signUp} handleClose={() => setDialog({signIn: false, signUp: false})}/>
     </div>
 
 }
