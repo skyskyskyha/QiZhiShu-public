@@ -15,7 +15,6 @@ export const ErrorSlice = createSlice({
             state.errorOccured = false
         }
     }
-
 })
 
 export const {raiseError, resolveError} = ErrorSlice.actions

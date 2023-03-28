@@ -5,7 +5,6 @@ import {useLocation} from "react-router-dom";
 const Footer = () => {
         let footer;
         if (useLocation().pathname === "/"){
-            console.log("这是首页")
             footer=document.getElementById("footer");
             if (footer != null) {
                 footer.style["marginTop"] = "2500px";

@@ -15,3 +15,11 @@ export const signInUser = (prop) => {
         data: prop
     })
 }
+
+export const getUserInfo = (prop) => {
+    return request({
+        url: `/user/${prop.id}`,
+        method: 'get',
+        data: prop
+    })
+}

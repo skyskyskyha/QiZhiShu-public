@@ -10,9 +10,8 @@ import { useDispatch } from 'react-redux';
 import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
 
 const SignInPage = (props) => {
+    const toggleSignMenu = props.toggleSignMenu
     const dispatch = useDispatch()
-
-
     const [value, setValue] = useState({
         phoneNumber: "",
         password: ""
@@ -40,14 +39,13 @@ const SignInPage = (props) => {
             changeStatus('phoneNumber', false)
         if (!value.password)
             changeStatus('password', false)
-
-
         if (value.phoneNumber && value.password && !status.requestPending) {
             changeStatus('requestPending', true)
+            console.log("登陆中...")
             const passwordMd5 = md5(value.password)
             signInUser({
                 Mobile: value.phoneNumber,
-                Password: passwordMd5
+                Password: value.password
             })
             .then(res => {
                 const token = res.data.token
@@ -63,11 +61,14 @@ const SignInPage = (props) => {
                 }, 1000)
             })
             .catch(err => {
+                alert("用户名或密码错误！")
                 changeStatus('requestPending', false)
             })
         }
     }
+    const handleOpenRegisterPage = ()=>{
 
+    }
     return <Dialog open={props.open} onClose={props.handleClose}>
                 <div className={'sign-in-dialog'}>
                     <h2>登录</h2>
@@ -75,9 +76,7 @@ const SignInPage = (props) => {
                         <li>
                             <Tooltip title='使用微信登录' placement='top' onClick={() => dispatch(raiseError("Service Unavailable"))}>
                                 <WechatOutlined className='position-absolute-centering'/>
-
                             </Tooltip>
-
                         </li>
                     </ul>
                     <div className='sign-in-divider'>
@@ -88,7 +87,7 @@ const SignInPage = (props) => {
                             使用账号密码登录
                         </p>
                         <span>
-                        新用户？<a>注册</a>
+                        新用户？<a onClick={toggleSignMenu}>注册</a>
                         </span>
 
                     </section>
@@ -117,7 +116,6 @@ const SignInPage = (props) => {
                         </Button>
                     </div>
                 </div>
-
     </Dialog>
 }
 

@@ -20,7 +20,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
           <NavigateBar/>
-          <ErrorPage />
+          {/*<ErrorPage />*/}
 
           <section className="main-wrap">
               <Routes>

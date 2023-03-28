@@ -2,7 +2,7 @@ import React from 'react';
 import '../assets/style/NavigateBar.scss'
 import logo from '../assets/img/logo.png'
 import {NavLink} from 'react-router-dom'
-import NavTools from "./NavTools";
+import NavTools from "./User/NavTools";
 const NavLinks = [
     {
       to: "/",

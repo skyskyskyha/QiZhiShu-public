@@ -4,13 +4,13 @@ import {WechatOutlined} from '@ant-design/icons'
 import "../../assets/style/SignInSignUp.scss"
 import md5 from 'js-md5'
 import { registerUser } from '../../api/User';
-
 import {useSelector, useDispatch} from 'react-redux'
 import {signIn, signOut} from '../../redux/SignInSlice'
 import { raiseError } from '../../redux/ErrorSlice';
 import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
 
-export default function FormDialog(props) {
+export default function SignUpPage(props) {
+    const toggleSignMenu = props.toggleSignMenu;
     const dispatch = useDispatch()
     const signInStatus = useSelector(state => state.SignInStatus)
     const [value, setValue] = useState({
@@ -41,7 +41,6 @@ export default function FormDialog(props) {
             [prop]: value
         })
     }
-
     const validateInput = (prop) => () => {
         let newStatus
         switch (prop) {
@@ -56,6 +55,7 @@ export default function FormDialog(props) {
                 break
             case "username":
                 newStatus = !!value.username
+                break
             default:
                 break
         }
@@ -79,7 +79,7 @@ export default function FormDialog(props) {
         registerUser({
             UserName: value.username,
             Mobile: value.phoneNumber,
-            Password: passwordMd5,
+            Password: value.password,
             Birthday: "2000-11-11",
             Avatar: "string",
             InstitutionID: 1
@@ -100,20 +100,14 @@ export default function FormDialog(props) {
         })
     }
     return (
-
             <Dialog open={props.open} onClose={props.handleClose}>
                 <div className={'sign-in-dialog'}>
-                    {/* <span className='sign-in-step'>
-                        第1步，共2步
-                    </span> */}
                     <h2>创建账户</h2>
                     <ul className='sign-in-alt'>
                         <li>
                             <Tooltip title='使用微信登录' placement='top' onClick={() => dispatch(raiseError("Service Unavailable"))}>
                                 <WechatOutlined className='position-absolute-centering'/>
-
                             </Tooltip>
-
                         </li>
                     </ul>
                     <div className='sign-in-divider'>
@@ -124,9 +118,8 @@ export default function FormDialog(props) {
                             使用电话号码注册
                         </p>
                         <span>
-                        已经有账户？<a>登录</a>
+                        已经有账户？<a onClick={toggleSignMenu}>登录</a>
                         </span>
-
                     </section>
                     <div className={'dialog-input-container'}>
                         <TextField
