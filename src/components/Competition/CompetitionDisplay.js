@@ -42,6 +42,7 @@ const CompetitionDisplay = () => {
                 <Pagination count={12}></Pagination>
             </TabPanel>
 
+
         </div>
     );
 }
