@@ -19,8 +19,7 @@ const TabPanel = (props) => {
 
 const CourseInfoPage = (props) => {
     const [option, setOption] = useState(0)
-    const [state, setState] = useState({
-    })
+    const [state, setState] = useState({})
     const id = useParams().id
 
     useEffect(() => {

@@ -10,7 +10,7 @@ export const getCourseDetail = (id) => {
 
 export const getProblemInfo = (id) => {
     return request({
-        url: `/problem/${id}`,
+        url: `/problem/problemInfo/${id}`,
         method: 'get'
     })
 }

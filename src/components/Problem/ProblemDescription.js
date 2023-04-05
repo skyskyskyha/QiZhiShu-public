@@ -7,7 +7,7 @@ import problemInfo from '../../static/problemInfo.json'
 const ProblemDescription = () => {
 
     const problemId = useParams().id
-    const [desc, setDesc] = useState(problemInfo[problemId])
+    const [desc, setDesc] = useState(problemId<=5?problemInfo[problemId]:problemInfo[1])
 
     useEffect(() => {
         getProblemInfo(problemId).then(data => {
@@ -21,12 +21,11 @@ const ProblemDescription = () => {
                 outerLink: newDesc.Link,
             })
         })
-    });
-
+    },[problemId]);
     return (
         <div className={"problem-desc"}>
             <h3> {desc.name} </h3>
-            <span className={"difficulty-medium"}> <strong>难度</strong> 中等 </span>
+            <span className={"difficulty-medium"}> <strong>难度</strong> {desc.difficulty} </span>
             <p><strong>题目描述：</strong> {desc.desc} </p>
             <p><strong>输入限制：</strong>{desc.inputReq}</p>
             <p><strong>输出限制：</strong>{desc.outputReq}</p>

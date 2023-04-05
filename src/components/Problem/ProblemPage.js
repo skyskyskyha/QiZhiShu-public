@@ -2,9 +2,12 @@ import React, {useState, useEffect, useRef, createRef} from 'react';
 import CodeEditor, {ForwardChild} from "./CodeEditor";
 import ProblemDescription from "./ProblemDescription";
 import {Snackbar, Alert} from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {SubmitProblem} from "../../api/Submission";
+import {SignInSlice} from "../../redux/SignInSlice";
 
 const ProblemPage = () => {
+    let problemId = useParams().id;
     const [code, setCode] = useState("");
     const navigate = useNavigate();
     const handleClose = (event, reason) => {
@@ -15,12 +18,21 @@ const ProblemPage = () => {
     };
     const handleClick = () => {
         setOpen(true);
-        //post the code to judger
-        console.log(code);
-        setTimeout(()=>{
+        SubmitProblem(
+            {
+                ProblemID: problemId,
+                ContestID: null,
+                ProgrammingLanguage: "C++",
+                CodeText: code
+            }
+        ).then(()=>{
+            setTimeout(()=>{
             console.log("跳转到判题页面中。。。");
             navigate("/judgingStatus");
-        },2000);
+        },20);})
+            .catch((e)=>{
+                alert("提交失败,原因： "+e)
+            })
     };
     const [open, setOpen] = useState(false)
     const problemPageRef = useRef()
@@ -42,7 +54,7 @@ const ProblemPage = () => {
             </div>
 
             <div className={"submit-button-wrapper"}>
-                <button> 题目列表 </button>
+                <button onClick={()=>{navigate("/ProblemList")}}> 题目列表 </button>
                 <button onClick={handleClick}> 提交代码 </button>
             </div>
         </div>

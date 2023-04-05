@@ -166,22 +166,22 @@ const Index = () => {
                 <Space wrap>
                     <Popover content={caowen}  trigger="hover">
                         <ul className="tabNavi">
-                            <li><a><span><img src={caowenpic} alt=""/></span></a></li>
+                            <li key={1}><a><span><img src={caowenpic} alt=""/></span></a></li>
                         </ul>
                     </Popover>
                     <Popover content={jinbin}  trigger="hover">
                         <ul className="tabNavi">
-                            <li><a><span><img src={jinbinpic} alt=""/></span></a></li>
+                            <li key={2}><a><span><img src={jinbinpic} alt=""/></span></a></li>
                         </ul>
                     </Popover>
                     <Popover content={chenjun}  trigger="hover">
                         <ul className="tabNavi">
-                            <li><a><span><img src={chenjunpic} alt=""/></span></a></li>
+                            <li key={3}><a><span><img src={chenjunpic} alt=""/></span></a></li>
                         </ul>
                     </Popover>
                     <Popover content={jiangzhongtian}  trigger="hover">
                         <ul className="tabNavi">
-                            <li><a><span><img src={jiangzhongtianpic} alt=""/></span></a></li>
+                            <li key={4}><a><span><img src={jiangzhongtianpic} alt=""/></span></a></li>
                         </ul>
                     </Popover>
                 </Space>
@@ -202,8 +202,8 @@ const Index = () => {
                             <p className="ttl"><span>为什么选择我们</span>Why did you choose us ?</p>
                             <p className="txt">启智树拥有全国一流的课程体系，阵容强大的师资团队、引领行业的教学方法，精英教育品质。</p>
                             <ul className="clearfix">
-                                <li className="li01"><span>20+</span>教学经验</li>
-                                <li><span>1000+</span>优秀学员</li>
+                                <li className="li01" key={1}><span>20+</span>教学经验</li>
+                                <li key={2}><span>1000+</span>优秀学员</li>
                             </ul>
                         </div>
                     </div>

@@ -85,8 +85,8 @@ const CodeEditor = (props, problemPageRef) => {
                             onChange={changeMode}
                     >
                         <MenuItem value={"c_cpp"}>C++</MenuItem>
-                        <MenuItem value={"python"}>Python</MenuItem>
-                        <MenuItem value={"javascript"}>JavaScript</MenuItem>
+                        <MenuItem value={"python"} disabled={true}>Python</MenuItem>
+                        <MenuItem value={"javascript"} disabled={true}>JavaScript</MenuItem>
                     </Select>
                     <FormControlLabel
                         control={<MaterialUISwitch sx={{ m: 1 }} checked={darkMode}

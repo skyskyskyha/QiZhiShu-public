@@ -1,12 +1,12 @@
-import React, {useState} from 'react'
+import React, {useReducer, useState} from 'react'
 import {Dialog, TextField, Button, Tooltip} from '@mui/material';
 import {WechatOutlined} from '@ant-design/icons'
 import "../../assets/style/SignInSignUp.scss"
 import { signInUser } from '../../api/User';
 import md5 from 'js-md5';
-import { signIn } from '../../redux/SignInSlice';
+import {signIn, SignInSlice} from '../../redux/SignInSlice';
 import { raiseError } from '../../redux/ErrorSlice';
-import { useDispatch } from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
 
 const SignInPage = (props) => {
@@ -34,6 +34,7 @@ const SignInPage = (props) => {
             [prop]: value
         })
     }
+
     const handleSignIn = () => {
         if (!value.phoneNumber)
             changeStatus('phoneNumber', false)
@@ -41,14 +42,14 @@ const SignInPage = (props) => {
             changeStatus('password', false)
         if (value.phoneNumber && value.password && !status.requestPending) {
             changeStatus('requestPending', true)
-            console.log("登陆中...")
-            const passwordMd5 = md5(value.password)
+            md5(value.password);
             signInUser({
                 Mobile: value.phoneNumber,
                 Password: value.password
             })
             .then(res => {
-                const token = res.data.token
+                const token = res.data.Token
+                localStorage.setItem("token",token)
                 dispatch(signIn({
                     token,
                     phoneNumber: value.phoneNumber
@@ -66,9 +67,7 @@ const SignInPage = (props) => {
             })
         }
     }
-    const handleOpenRegisterPage = ()=>{
 
-    }
     return <Dialog open={props.open} onClose={props.handleClose}>
                 <div className={'sign-in-dialog'}>
                     <h2>登录</h2>

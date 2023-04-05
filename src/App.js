@@ -1,19 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-import NavigateBar from "./components/NavigateBar";
-import 'font-awesome/css/font-awesome.min.css';
-import {Routes, Route, Link, Navigate} from 'react-router-dom'
-import CoursePage from "./components/Course/CoursePage";
-import CourseInfoPage from "./components/Course/CourseInfoPage";
-import ProblemPage from "./components/Problem/ProblemPage";
-import { Provider } from 'react-redux';
+import './App.css'
+import NavigateBar from "./components/NavigateBar"
+import 'font-awesome/css/font-awesome.min.css'
+import {Routes, Route, Navigate} from 'react-router-dom'
+import CoursePage from "./components/Course/CoursePage"
+import CourseInfoPage from "./components/Course/CourseInfoPage"
+import ProblemPage from "./components/Problem/ProblemPage"
+import { Provider } from 'react-redux'
 import store from './store'
-import ErrorPage from './components/ErrorPage';
-import CompetitionPage from "./components/Competition/CompetitionPage";
+import CompetitionPage from "./components/Competition/CompetitionPage"
 import Index from './components/Index/Index'
-import Footer from './components/Footer'
 import "./App.scss"
-import JudgingStatus from "./components/Course/JudgingStatus";
+import JudgingStatus from "./components/Course/JudgingStatus"
+import ProblemList from "./components/Problem/ProblemList";
 
 function App() {
   return (
@@ -21,7 +19,6 @@ function App() {
       <div className="App">
           <NavigateBar/>
           {/*<ErrorPage />*/}
-
           <section className="main-wrap">
               <Routes>
                   <Route path="/" element={<Index/>} />
@@ -39,10 +36,9 @@ function App() {
                   </Route>
 
                   <Route path="competition" element={<CompetitionPage/>}/>
-
-
                   <Route path="problem/:id" element={<ProblemPage/>}/>
                   <Route path="judgingstatus" element={<JudgingStatus/>}/>
+                  <Route path="problemlist" element={<ProblemList/>}/>
               </Routes>
           </section>
       </div>
