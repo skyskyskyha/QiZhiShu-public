@@ -13,7 +13,7 @@ import caowenpic from "../../assets/img/caowen.jpg"
 import jinbinpic from "../../assets/img/jinbin.jpg"
 import chenjunpic from "../../assets/img/chenjun.jpg"
 import jiangzhongtianpic from "../../assets/img/jiangzhongtian.jpg"
-import {Button, Divider, Typography, Carousel, Space, Popover} from "antd"
+import {Popover, Space, Typography} from "antd"
 import './index.scss'
 import $ from 'jquery'
 import Footer from "../Footer";

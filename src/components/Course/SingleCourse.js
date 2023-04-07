@@ -1,6 +1,5 @@
 import React from 'react';
-import {Typography, Accordion, AccordionSummary, FormControlLabel} from "@mui/material";
-import {} from "@mui/material";
+import {Accordion, AccordionSummary, FormControlLabel, Typography} from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import "../../assets/style/CourseContent.scss"
 import Stepper from "./CourseCodingProgress"

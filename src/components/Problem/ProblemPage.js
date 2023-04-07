@@ -1,10 +1,9 @@
 import React, {useState, useEffect, useRef, createRef} from 'react';
-import CodeEditor, {ForwardChild} from "./CodeEditor";
+import {ForwardChild} from "./CodeEditor";
 import ProblemDescription from "./ProblemDescription";
 import {Snackbar, Alert} from "@mui/material";
 import {useNavigate, useParams} from "react-router-dom";
 import {SubmitProblem} from "../../api/Submission";
-import {SignInSlice} from "../../redux/SignInSlice";
 
 const ProblemPage = () => {
     let problemId = useParams().id;

@@ -1,13 +1,13 @@
-import React, {useReducer, useState} from 'react'
-import {Dialog, TextField, Button, Tooltip} from '@mui/material';
-import {WechatOutlined} from '@ant-design/icons'
+import React, {useState} from 'react'
+import {Button, Dialog, TextField, Tooltip} from '@mui/material';
+import {CheckOutlined, LoadingOutlined, WechatOutlined} from '@ant-design/icons'
 import "../../assets/style/SignInSignUp.scss"
-import { signInUser } from '../../api/User';
+import {signInUser} from '../../api/User';
 import md5 from 'js-md5';
-import {signIn, SignInSlice} from '../../redux/SignInSlice';
-import { raiseError } from '../../redux/ErrorSlice';
-import {useDispatch, useSelector} from 'react-redux';
-import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
+import {signIn} from '../../redux/SignInSlice';
+import {raiseError} from '../../redux/ErrorSlice';
+import {useDispatch} from 'react-redux';
+import {SaveUserInfo} from "../../util";
 
 const SignInPage = (props) => {
     const toggleSignMenu = props.toggleSignMenu
@@ -50,6 +50,7 @@ const SignInPage = (props) => {
             .then(res => {
                 const token = res.data.Token
                 localStorage.setItem("token",token)
+                SaveUserInfo({Mobile:value.phoneNumber,Password: value.password})
                 dispatch(signIn({
                     token,
                     phoneNumber: value.phoneNumber

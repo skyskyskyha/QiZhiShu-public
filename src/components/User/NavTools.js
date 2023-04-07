@@ -9,6 +9,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import { signIn, signOut } from "../../redux/SignInSlice";
 import UserProfilePage from "./UserProfilePage";
+import {DeleteUserInfo} from "../../util";
 
 const NavTools = () => {
     const dispatch = useDispatch()
@@ -42,7 +43,7 @@ const NavTools = () => {
     const signInStatus = useSelector(state => state.SignInStatus)
     const handleSignOut = () => {
         dispatch(signOut())
-        console.log(signInStatus)
+        DeleteUserInfo()
     }
     return (
         <div className="nav-user-icon-container">

@@ -1,10 +1,9 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import '../../assets/style/CoursePage.scss'
 import CourseNavMenu from "./CourseNavMenu";
-import Button from "../Button";
 import CourseDisplay from "./CourseDisplay";
-import {Routes, Route} from "react-router-dom";
-import axios from 'axios'
+
+// eslint-disable-next-line no-unused-vars
 const options = [
     {
         name: 'C++',
@@ -21,10 +20,9 @@ const options = [
 ]
 
 const CoursePage = () => {
-
     return (
         <div className={"course-wrap flex-all-center"}>
-            <CourseNavMenu options={options}/>
+            {/*<CourseNavMenu options={options}/>*/}
             <CourseDisplay/>
         </div>
     );

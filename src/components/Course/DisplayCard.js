@@ -3,10 +3,14 @@ import AddTaskIcon from '@mui/icons-material/AddTask';
 import LiveHelpOutlinedIcon from '@mui/icons-material/LiveHelpOutlined';
 import {getCourseDetail} from "../../api/Course";
 import {useNavigate} from "react-router-dom";
+import {SUM_COURSE} from "../../constant";
+import forbidden from '../../assets/img/forbidden.png'
 
 const DisplayCard = (props) => {
 
-
+    let backgroundImage = "https://coursera_assets.s3.amazonaws.com/images/d62bf424793de088e2a09ff1ce4519ad.jpg"
+    if (props.courseId===0||props.courseId>SUM_COURSE)
+        backgroundImage = forbidden
 
     const [state, setState] = useState({
         name: "",
@@ -14,12 +18,11 @@ const DisplayCard = (props) => {
         id: "",
         maxStudent: 0,
         teachers: [],
-
     })
     const navigate = useNavigate()
 
     useEffect(() => {
-        getCourseDetail(props.courseId)
+        (props.courseId>0&&props.courseId<=SUM_COURSE) && getCourseDetail(props.courseId)
             .then(data => {
                 const info = data.data.ClassInfo
                 setState({
@@ -31,13 +34,14 @@ const DisplayCard = (props) => {
                 })
             })
             .catch(err => {})
-    }, [])
+    }, [props.courseId])
     return (
         <div className={'display-card-main'} onClick={() => {
-            navigate('/course/info/' + props.courseId)
+            if (props.courseId>0 && props.courseId<=SUM_COURSE)
+                navigate('/course/info/' + props.courseId)
         }}>
             <div className={'display-card-preview'}
-                 style={{backgroundImage: `url('${'https://coursera_assets.s3.amazonaws.com/images/d62bf424793de088e2a09ff1ce4519ad.jpg'}')`}}>
+                 style={{backgroundImage: `url('${backgroundImage}')`}}>
             </div>
             <div className={'display-card-content'}>
                 <h4> {state.name} </h4>

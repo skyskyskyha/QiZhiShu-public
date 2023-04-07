@@ -93,6 +93,11 @@ export default function JudgingStatus() {
                 columns={columns}
                 pageSize={5}
                 rowsPerPageOptions={[5]}
+                initialState={{
+                    sorting: {
+                        sortModel: [{ field: 'id', sort: 'desc' }],
+                    },
+                }}
                 sx={{
                     width: '100%',
                     '& .super-app-theme--cell': {

@@ -5,14 +5,14 @@ import "../../assets/style/SignInSignUp.scss"
 import md5 from 'js-md5'
 import { registerUser } from '../../api/User';
 import {useSelector, useDispatch} from 'react-redux'
-import {signIn, signOut} from '../../redux/SignInSlice'
+import {signIn} from '../../redux/SignInSlice'
 import { raiseError } from '../../redux/ErrorSlice';
 import {LoadingOutlined, CheckOutlined} from '@ant-design/icons'
 
 export default function SignUpPage(props) {
     const toggleSignMenu = props.toggleSignMenu;
     const dispatch = useDispatch()
-    const signInStatus = useSelector(state => state.SignInStatus)
+    useSelector(state => state.SignInStatus);
     const [value, setValue] = useState({
         username: "",
         password: "",
